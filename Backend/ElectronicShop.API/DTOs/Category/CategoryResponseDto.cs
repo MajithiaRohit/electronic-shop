@@ -1,4 +1,4 @@
-﻿namespace ElectronicShop.API.DTOs
+﻿namespace ElectronicShop.API.DTOs.Category
 {
     public class CategoryResponseDto
     {
