@@ -4,7 +4,7 @@ using ElectronicShop.API.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
-namespace ElectronicShop.API.Services
+namespace ElectronicShop.API.Services.Implementations
 {
     public class CategoryService 
     {
