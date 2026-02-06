@@ -1,5 +1,5 @@
 ﻿using ElectronicShop.API.Data;
-using ElectronicShop.API.DTOs;
+using ElectronicShop.API.DTOs.Category;
 using ElectronicShop.API.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;

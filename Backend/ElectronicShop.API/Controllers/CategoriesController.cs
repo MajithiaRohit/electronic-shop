@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using ElectronicShop.API.DTOs;
+using ElectronicShop.API.DTOs.Category;
 using ElectronicShop.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
