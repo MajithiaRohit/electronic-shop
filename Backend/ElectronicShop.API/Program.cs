@@ -1,17 +1,16 @@
 using ElectronicShop.API.Data;
-using ElectronicShop.API.Middlewares;
-using ElectronicShop.API.Services.Implementations;
-using ElectronicShop.API.Services.Interfaces;
+using ElectronicShop.API.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IProductService, ProductService>();
+
 //All Services Registration
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -37,7 +36,7 @@ app.UseCors(policy =>
 });
 
 app.UseAuthorization();
-app.UseMiddleware<ExceptionMiddleware>();
+
 app.MapControllers();
 
 app.Run();
