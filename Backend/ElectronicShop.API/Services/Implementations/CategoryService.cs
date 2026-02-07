@@ -23,7 +23,9 @@ namespace ElectronicShop.API.Services.Implementations
                     Id = c.Id,
                     Name = c.Name,
                     Description = c.Description,
-                    IsActive = c.IsActive
+                    IsActive = c.IsActive,
+                    CreatedAt = c.CreatedAt,
+                    UpdatedAt = c.UpdatedAt
                 })
                 .ToListAsync();
         }
@@ -37,7 +39,9 @@ namespace ElectronicShop.API.Services.Implementations
                     Id = c.Id,
                     Name = c.Name,
                     Description = c.Description,
-                    IsActive = c.IsActive
+                    IsActive = c.IsActive,
+                    CreatedAt = c.CreatedAt,
+                    UpdatedAt = c.UpdatedAt 
                 })
                 .FirstOrDefaultAsync();
         }
