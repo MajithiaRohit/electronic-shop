@@ -66,4 +66,21 @@ export class ProductList {
     }
   }
 
+  isDefaultDate(value: string | null | undefined) {
+    if (!value) {
+      return true;
+    }
+    return new Date(value).getFullYear() === 1;
+  }
+
+  normalizeUtc(value: string | null | undefined) {
+    if (!value) {
+      return value ?? '';
+    }
+    // If no timezone info, treat as UTC by appending Z
+    if (/[zZ]|[+-]\d{2}:\d{2}$/.test(value)) {
+      return value;
+    }
+    return `${value}Z`;
+  }
 }

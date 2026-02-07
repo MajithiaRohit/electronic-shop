@@ -19,6 +19,10 @@
           <th>Name</th>
           <th>Description</th>
           <th>Status</th>
+          <th>Created Date</th>
+          <th>Created Time</th>
+          <th>Updated Date</th>
+          <th>Updated Time</th>
           <th style="width: 150px;">Actions</th>
         </tr>
       </thead>
@@ -33,6 +37,22 @@
                 <span class="badge bg-success">Active</span>
               } @else {
                 <span class="badge bg-secondary">Inactive</span>
+              }
+            </td>
+            <td>{{ normalizeUtc(c.createdAt) | date:'dd-MM-yyyy':'Asia/Kolkata' }}</td>
+            <td>{{ normalizeUtc(c.createdAt) | date:'hh:mm a':'Asia/Kolkata' }}</td>
+            <td>
+              @if (!isDefaultDate(c.updatedAt)) {
+                {{ normalizeUtc(c.updatedAt) | date:'dd-MM-yyyy':'Asia/Kolkata' }}
+              } @else {
+                -
+              }
+            </td>
+            <td>
+              @if (!isDefaultDate(c.updatedAt)) {
+                {{ normalizeUtc(c.updatedAt) | date:'hh:mm a':'Asia/Kolkata' }}
+              } @else {
+                -
               }
             </td>
             <td>
