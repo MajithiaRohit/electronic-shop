@@ -22,6 +22,10 @@
           <th>Stock</th>
           <th>Category</th>
           <th>Status</th>
+          <th>Created Date</th>
+          <th>Created Time</th>
+          <th>Updated Date</th>
+          <th>Updated Time</th>
           <th style="width: 150px;">Actions</th>
         </tr>
       </thead>
@@ -41,6 +45,10 @@
                 <span class="badge bg-secondary">Inactive</span>
               }
             </td>
+            <td>{{ p.createdAt | date:'dd-MM-yyyy' }}</td>
+            <td>{{ p.createdAt | date:'HH:mm:ss' }}</td>
+            <td>{{ p.updatedAt | date:'dd-MM-yyyy' }}</td>
+            <td>{{ p.updatedAt | date:'HH:mm:ss' }}</td>
             <td>
               <button class="btn btn-sm btn-warning me-2" (click)="updateProduct(p.id)">
                 Edit

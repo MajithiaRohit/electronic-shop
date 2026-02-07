@@ -2,13 +2,13 @@ import { Component, inject, signal } from '@angular/core';
 import { Router ,RouterLink } from '@angular/router';
 import { Product } from '../../../../../models/productModel';
 import { ProductService } from '../../../core/services/productService';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { CategoryService } from '../../../core/services/category';
 import { Category } from '../../../../../models/categoryModel';
 
 @Component({
   selector: 'app-product-list',
-  imports: [RouterLink,CurrencyPipe],
+  imports: [RouterLink, CurrencyPipe, DatePipe],
   templateUrl: './products-page.html',
   styleUrl: './products-page.css',
 })
