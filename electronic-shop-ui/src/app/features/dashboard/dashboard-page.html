@@ -1,0 +1,63 @@
+<div class="page-header">
+  <div>
+    <h4 class="page-title">Dashboard</h4>
+    <div class="page-subtitle">A quick snapshot of inventory health and activity.</div>
+  </div>
+  <div class="d-flex gap-2">
+    <a routerLink="/products/add" class="btn btn-primary">Add Product</a>
+    <a routerLink="/categories/add" class="btn btn-outline-secondary">Add Category</a>
+  </div>
+</div>
+
+@if (loading()) {
+  <div class="text-center">Loading summary...</div>
+} @else {
+  <div class="dashboard-grid">
+    <div class="stat-card">
+      <div class="stat-label">Total Products</div>
+      <div class="stat-value">{{ totalProducts() }}</div>
+      <div class="stat-meta">Across all categories</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Active Products</div>
+      <div class="stat-value">{{ activeProducts() }}</div>
+      <div class="stat-meta">Live items in catalog</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Low Stock</div>
+      <div class="stat-value">{{ lowStock() }}</div>
+      <div class="stat-meta">At or below 5 units</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Categories</div>
+      <div class="stat-value">{{ totalCategories() }}</div>
+      <div class="stat-meta">Organized collections</div>
+    </div>
+  </div>
+
+  <div class="dashboard-lower">
+    <div class="card p-4 flex-fill">
+      <h6 class="section-title">Latest Activity</h6>
+      <div class="activity-row">
+        <div class="activity-title">Last catalog update</div>
+        <div class="activity-value">
+          @if (latestActivity()) {
+            {{ latestActivity() | date:'dd MMM yyyy, hh:mm a':'Asia/Kolkata' }}
+          } @else {
+            -
+          }
+        </div>
+      </div>
+      <div class="activity-note">Based on most recent product update time.</div>
+    </div>
+
+    <div class="card p-4 quick-actions">
+      <h6 class="section-title">Quick Actions</h6>
+      <div class="action-list">
+        <a routerLink="/products" class="action-link">Review Products</a>
+        <a routerLink="/categories" class="action-link">Manage Categories</a>
+        <a routerLink="/products/add" class="action-link">Create New Product</a>
+      </div>
+    </div>
+  </div>
+}

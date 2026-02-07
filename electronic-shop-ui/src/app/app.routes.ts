@@ -2,13 +2,17 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
-        path: 'categories',
-        loadComponent: () => import('./features/categories/categories-page/categories-page').then(m => m.List),
+        path: 'dashboard',
+        loadComponent: () => import('./features/dashboard/dashboard-page').then(m => m.DashboardPage),
     },
     {
         path: '',
-        redirectTo: 'categories',
+        redirectTo: 'dashboard',
         pathMatch: 'full',
+    },
+    {
+        path: 'categories',
+        loadComponent: () => import('./features/categories/categories-page/categories-page').then(m => m.List),
     },
     {
         path: 'categories/add',
