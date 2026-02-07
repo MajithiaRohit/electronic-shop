@@ -1,14 +1,48 @@
-<div class="sidebar d-flex flex-column vh-100 border-end">
+<div class="sidebar d-flex flex-column vh-100" [class.collapsed]="collapsed">
+  <div class="sidebar-top">
+    <div class="sidebar-brand">
+      <div class="brand-mark">ES</div>
+      <div class="brand-text">
+        <div class="brand-name">ElectronicShop</div>
+        <div class="brand-subtitle">Admin</div>
+      </div>
+    </div>
+    <button type="button" class="icon-button" (click)="toggleCollapsed()">
+      <span class="visually-hidden">Toggle sidebar</span>
+      <svg class="icon-chevron" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="sidebar-section">Overview</div>
+  <ul class="nav nav-pills flex-column gap-2 sidebar-nav">
+    <li class="nav-item">
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-text">Dashboard</span>
+      </a>
+    </li>
+  </ul>
+
   <div class="sidebar-section">Inventory</div>
   <ul class="nav nav-pills flex-column gap-2 sidebar-nav">
     <li class="nav-item">
-      <a routerLink="/categories" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Categories</a>
+      <a routerLink="/categories" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon">🗂️</span>
+        <span class="nav-text">Categories</span>
+      </a>
     </li>
     <li class="nav-item">
-      <a routerLink="/products" routerLinkActive="active" class="nav-link">Products</a>
+      <a routerLink="/products" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon">📦</span>
+        <span class="nav-text">Products</span>
+      </a>
     </li>
     <li class="nav-item">
-      <a routerLink="/orders" routerLinkActive="active" class="nav-link">Orders</a>
+      <a routerLink="/orders" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon">🧾</span>
+        <span class="nav-text">Orders</span>
+      </a>
     </li>
 
   </ul>

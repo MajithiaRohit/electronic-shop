@@ -8,5 +8,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
+  collapsed = false;
 
+  toggleCollapsed() {
+    this.collapsed = !this.collapsed;
+  }
 }
