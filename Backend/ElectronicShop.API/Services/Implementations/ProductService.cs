@@ -27,6 +27,8 @@ namespace ElectronicShop.API.Services.Implementations
                     Price = p.Price,
                     StockQuantity = p.StockQuantity,
                     IsActive = p.IsActive,
+                    CreatedAt = p.CreatedAt,
+                    UpdatedAt = p.UpdatedAt,
                     CategoryId = p.CategoryId,
                     CategoryName = p.Category!.Name,
                 })
@@ -50,6 +52,8 @@ namespace ElectronicShop.API.Services.Implementations
                     Price = p.Price,
                     StockQuantity = p.StockQuantity,
                     IsActive = p.IsActive,
+                    CreatedAt = p.CreatedAt,
+                    UpdatedAt = p.UpdatedAt,
                     CategoryId = p.CategoryId,
                     CategoryName = p.Category!.Name
                 })
