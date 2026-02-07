@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4>Products</h4>
+  <a routerLink="/products/add" class="btn btn-primary">
+    + Add Product
+  </a>
+</div>
+
+@if (loading()) {
+  <div class="text-center">Loading...</div>
+} @else {
+
+  @if (products().length === 0) {
+    <div class="alert alert-info">No products found</div>
+  } @else {
+
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th style="width: 150px;">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (p of products(); track p.id) {
+          <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.description }}</td>
+            <td>{{ p.price | currency:'INR':'symbol':'1.2-2':'en-IN' }}</td>
+            <td>{{ p.stockQuantity }}</td>
+            <td>{{ p.category?.name || getCategoryName(p.categoryId) }}</td>
+            <td>
+              @if (p.isActive) {
+                <span class="badge bg-success">Active</span>
+              } @else {
+                <span class="badge bg-secondary">Inactive</span>
+              }
+            </td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2" (click)="updateProduct(p.id)">
+                Edit
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+  }
+}
