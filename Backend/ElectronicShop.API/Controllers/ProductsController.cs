@@ -35,7 +35,7 @@ namespace ElectronicShop.API.Controllers
             return Ok(new { Message = "Product Created Succesfully."});
         }
 
-        [HttpPost("id")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(int id, UpdateProductDto dto)
         {
             await _service.UpdateProductAsync(id, dto);
