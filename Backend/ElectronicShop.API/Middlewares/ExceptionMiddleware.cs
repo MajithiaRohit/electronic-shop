@@ -7,10 +7,12 @@ namespace ElectronicShop.API.Middlewares
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly IWebHostEnvironment _env;
 
-        public ExceptionMiddleware(RequestDelegate next)
+        public ExceptionMiddleware(RequestDelegate next, IWebHostEnvironment env)
         {
             _next = next;
+            _env = env;
         }
 
         public async Task Invoke(HttpContext context) {
@@ -22,10 +24,12 @@ namespace ElectronicShop.API.Middlewares
             {
                 await HandleException(context, HttpStatusCode.NotFound, ex.Message);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                await HandleException(context, HttpStatusCode.InternalServerError,
-                    "Something went wrong. Please try again later.");
+                var message = _env.IsDevelopment()
+                    ? ex.ToString()
+                    : "Something went wrong. Please try again later.";
+                await HandleException(context, HttpStatusCode.InternalServerError, message);
             }
         }
 
