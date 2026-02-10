@@ -13,5 +13,8 @@
       Live Store
     </div>
     <div class="header-user">Admin</div>
+    @if (isLoggedIn()) {
+      <button class="header-logout" type="button" (click)="logout()">Logout</button>
+    }
   </div>
 </nav>
