@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        alert(error.error?.message || 'Something went wrong');
+        console.error('HTTP error', error);
         return throwError(() => error);
       })
   );
