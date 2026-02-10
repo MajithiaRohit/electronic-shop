@@ -1,0 +1,117 @@
+<section class="login">
+  <div class="login__grid">
+    <aside class="login__hero" aria-hidden="true">
+      <div class="hero__content">
+        <div class="hero__badge">Electronic Shop</div>
+        <h1 class="hero__title">Welcome back.</h1>
+        <p class="hero__subtitle">
+          Sign in to track orders, manage wishlists, and get early access to new drops.
+        </p>
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__value">2,400+</span>
+            <span class="stat__label">Verified sellers</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">4.9/5</span>
+            <span class="stat__label">Avg. rating</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__shape"></div>
+      <div class="hero__shape hero__shape--alt"></div>
+    </aside>
+
+    <div class="login__card">
+      <div class="card__header">
+        <div class="brand-mark">ES</div>
+        <div>
+          <p class="eyebrow">Account</p>
+          <h2 class="card__title">Sign in</h2>
+        </div>
+      </div>
+
+      <form class="card__form" [formGroup]="form" (ngSubmit)="login()" novalidate>
+        <label class="field">
+          <span>Email</span>
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="you@domain.com"
+            autocomplete="email"
+            [class.invalid]="form.controls.email.invalid && (form.controls.email.touched || form.controls.email.dirty)"
+          />
+          @if (form.controls.email.touched && form.controls.email.invalid) {
+            <small class="field__error">
+              @if (form.controls.email.hasError('required')) {
+                Email is required.
+              } @else {
+                Enter a valid email address.
+              }
+            </small>
+          }
+        </label>
+        <label class="field field--password">
+          <span>Password</span>
+          <div class="field__password">
+            <input
+              [type]="showPassword() ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              [class.invalid]="form.controls.password.invalid && (form.controls.password.touched || form.controls.password.dirty)"
+            />
+            <button
+              class="toggle"
+              type="button"
+              (click)="showPassword.set(!showPassword())"
+              [attr.aria-pressed]="showPassword()"
+              [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
+              title="{{ showPassword() ? 'Hide password' : 'Show password' }}"
+            >
+              <svg class="toggle__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 5c-5.23 0-9.27 3.11-11 7 1.73 3.89 5.77 7 11 7s9.27-3.11 11-7c-1.73-3.89-5.77-7-11-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
+                  fill="currentColor"
+                />
+                <circle cx="12" cy="12" r="2.2" fill="#ffffff"/>
+              </svg>
+              <span class="toggle__slash" aria-hidden="true"></span>
+            </button>
+          </div>
+          @if (form.controls.password.touched && form.controls.password.invalid) {
+            <small class="field__error">Password is required.</small>
+          }
+        </label>
+
+        <div class="form__row">
+          <label class="checkbox">
+            <input type="checkbox" />
+            <span>Remember me</span>
+          </label>
+          <button type="button" class="link">Forgot password?</button>
+        </div>
+
+        @if (error(); as err) {
+          <p class="form__error">{{ err }}</p>
+        }
+
+        <button class="primary" type="submit" [disabled]="loading() || form.invalid">
+          @if (!loading()) {
+            <span>Sign in</span>
+          } @else {
+            <span class="loading">
+              <span class="spinner"></span>
+              Signing in...
+            </span>
+          }
+        </button>
+
+        <div class="divider">
+          <span>New here?</span>
+        </div>
+        <button class="secondary" type="button">Create account</button>
+      </form>
+    </div>
+  </div>
+</section>
